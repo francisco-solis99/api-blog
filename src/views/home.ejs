@@ -1,0 +1,64 @@
+<%- include('partials/head') %>
+  <div class="app container mx-auto w-11/12">
+    <header class="my-10 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-center">
+        Expresso Blog 🚀
+      </h1>
+      <nav>
+        <ul class="list-none flex gap-4">
+          <li class="">
+            <a href="#posts">Posts 🔖</a>
+          </li>
+          <li>
+            <a href="#users">Users🧑</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="">
+      <section class="posts" id="#posts">
+        <h2 class="text-xl font-semibold underline decoration-wavy decoration-orange-300">Posts</h2>
+        <div class="posts__wrapper grid grid-cols-fluid gap-4">
+          <% postsSD.forEach((post)=> { %>
+            <article class="card my-4">
+              <img src="<%= post.imageSrc %>" alt="" class="w-full object-cover">
+              <div class="card__info">
+                <h3 class="text-lg text-orange-300">
+                  <%= post.title %>
+                </h3>
+                <p class="text-sm text-slate-200">
+                  <%= post.content %>
+                </p>
+              </div>
+            </article>
+            <% }); %>
+        </div>
+      </section>
+
+      <section class="users mt-10 mb-6" id="#users">
+        <h2 class="text-xl font-semibold underline decoration-wavy decoration-orange-300">Users</h2>
+        <div class="users__wrapper grid grid-cols-fluid gap-4">
+          <% users.forEach((user)=> { %>
+            <article class="card my-4">
+              <figure class="backdrop-blur-sm bg-white/20 rounded-lg">
+                <img src="<%= user.profilePicture %>" alt="" class="w-4/5 mx-auto animate-jump">
+              </figure>
+              <div class="mt-2 user__info flex flex-col items-center">
+                <h3 class="text-base">
+                  <%= user.name %>
+                    <%= user.lastname %>
+                </h3>
+                <p class="text-sm text-slate-300">
+                  <%= user.bio %>
+                </p>
+              </div>
+            </article>
+            <% }); %>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <%- include('partials/footer') %>
